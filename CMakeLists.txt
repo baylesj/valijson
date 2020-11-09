@@ -186,3 +186,12 @@ if(valijson_BUILD_EXAMPLES)
     target_link_libraries(object_iteration jsoncpp)
     target_link_libraries(json_pointers)
 endif()
+
+file(GLOB SOURCES include/**/*.hpp tests/*.cpp tests/*.hpp examples/*.cpp)
+add_custom_target(
+        clang-format
+        COMMAND clang-format
+        -style=Google
+        -i
+        ${SOURCES}
+)
